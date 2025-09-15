@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Website</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    nav {
+      background: black;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      position: relative;
+      z-index: 100;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: red;
+      margin-right: 30px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      padding: 8px;
+      display: block;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: red;
+    }
+
+    /* Dropdown */
+    nav ul li ul {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #111;
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid red;
+      border-radius: 5px;
+      overflow: hidden;
+
+      max-height: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.35s ease;
+    }
+
+    nav ul li:hover ul {
+      max-height: 600px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    nav ul li ul li a {
+      padding: 10px;
+      text-align: left;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    /* Mobile Menu */
+    @media (max-width: 768px) {
+      nav {
+        flex-wrap: wrap;
+      }
+
+      nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: black;
+        padding: 10px 0;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      nav ul li {
+        width: 100%;
+      }
+
+      nav ul li ul {
+        position: static;
+        max-height: 0;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      nav ul li:hover ul {
+        max-height: 500px;
+        opacity: 1;
+      }
+
+      .hamburger {
+        display: flex;
+        margin-left: auto;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 50px 20px;
+      background: white;
+    }
+
+    .hero img {
+      max-width: 500px;
+      width: 100%;
+      border-radius: 10px;
+      opacity: 0;
+      transform: scale(0.9);
+      animation: zoomIn 2s ease forwards;
+    }
+
+    .hero-content {
+      max-width: 500px;
+      margin-left: 30px;
+    }
+
+    .hero-content h1 {
+      font-size: 2.5rem;
+      color: black;
+      opacity: 0;
+      transform: translateX(-50px);
+      animation: slideLeft 1.2s ease forwards;
+      animation-delay: 0.5s;
+    }
+
+    .hero-content p {
+      margin: 20px 0;
+      font-size: 1.1rem;
+      color: #333;
+      opacity: 0;
+      transform: translateX(50px);
+      animation: slideRight 1.2s ease forwards;
+      animation-delay: 1s;
+    }
+
+    .hero-content .buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1.2s ease forwards;
+      animation-delay: 1.5s;
+    }
+
+    .hero-content .buttons button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-primary {
+      background: red;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: darkred;
+    }
+
+    .btn-secondary {
+      background: black;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #333;
+    }
+
+    /* Animations */
+    @keyframes zoomIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes slideLeft {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideRight {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">FASHION</div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul id="nav-links">
+      <li><a href="#">Home</a></li>
+      <li>
+        <a href="#">Services ∨</a>
+        <ul>
+          <li><a href="#">Styling</a></li>
+          <li><a href="#">Makeover</a></li>
+          <li><a href="#">Custom Design</a></li>
+          <li><a href="#">Wardrobe Setup</a></li>
+          <li><a href="#">Personal Shopper</a></li>
+          <li><a href="#">Virtual Styling</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Programs ∨</a>
+        <ul>
+          <li><a href="#">Workshops</a></li>
+          <li><a href="#">Fashion Shows</a></li>
+          <li><a href="#">Training</a></li>
+          <li><a href="#">Brand Launches</a></li>
+          <li><a href="#">Networking</a></li>
+          <li><a href="#">Photo Shoots</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Categories ∨</a>
+        <ul>
+          <li><a href="#">Gowns</a></li>
+          <li><a href="#">Shoes</a></li>
+          <li><a href="#">Accessories</a></li>
+          <li><a href="#">Bags</a></li>
+          <li><a href="#">Jewelry</a></li>
+          <li><a href="#">Seasonal</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <img src="https://via.placeholder.com/500x400.png?text=Fashion+Image" alt="Fashion Image">
+    <div class="hero-content">
+      <h1>Step Into Elegance</h1>
+      <p>Discover our latest collection of gowns, shoes, and accessories designed to bring out your confidence and style.</p>
+      <div class="buttons">
+        <button class="btn-primary">Shop Now</button>
+        <button class="btn-secondary">Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("nav-links").classList.toggle("active");
+    }
+  </script>
+
+</body>
+</html>
