@@ -15,7 +15,8 @@
     body {
       font-family: Arial, sans-serif;
       background: #fff;
-      overflow-x: hidden;
+      color: #000;
+      line-height: 1.6;
     }
 
     /* Navbar */
@@ -26,15 +27,15 @@
       justify-content: space-between;
       align-items: center;
       padding: 12px 20px;
-      position: relative;
+      position: sticky;
+      top: 0;
       z-index: 100;
     }
 
     nav .logo {
       font-size: 1.5rem;
       font-weight: bold;
-      color: red;
-      margin-right: 30px;
+      color: hotpink;
     }
 
     nav ul {
@@ -56,7 +57,7 @@
     }
 
     nav ul li a:hover {
-      color: red;
+      color: yellow;
     }
 
     /* Dropdown */
@@ -68,7 +69,7 @@
       width: 200px;
       display: flex;
       flex-direction: column;
-      border: 1px solid red;
+      border: 1px solid hotpink;
       border-radius: 5px;
       overflow: hidden;
 
@@ -104,7 +105,6 @@
       transition: 0.3s;
     }
 
-    /* Mobile Menu */
     @media (max-width: 768px) {
       nav {
         flex-wrap: wrap;
@@ -148,88 +148,86 @@
     .hero {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
+      padding: 60px 10%;
+      background: #fff;
       flex-wrap: wrap;
-      padding: 50px 20px;
-      background: white;
     }
 
     .hero img {
-      max-width: 500px;
+      max-width: 400px;
       width: 100%;
-      border-radius: 10px;
       opacity: 0;
       transform: scale(0.9);
-      animation: zoomIn 2s ease forwards;
+      animation: fadeZoom 1.5s ease forwards;
     }
 
-    .hero-content {
-      max-width: 500px;
-      margin-left: 30px;
-    }
-
-    .hero-content h1 {
-      font-size: 2.5rem;
-      color: black;
-      opacity: 0;
-      transform: translateX(-50px);
-      animation: slideLeft 1.2s ease forwards;
-      animation-delay: 0.5s;
-    }
-
-    .hero-content p {
-      margin: 20px 0;
-      font-size: 1.1rem;
-      color: #333;
-      opacity: 0;
-      transform: translateX(50px);
-      animation: slideRight 1.2s ease forwards;
-      animation-delay: 1s;
-    }
-
-    .hero-content .buttons {
-      margin-top: 20px;
-      display: flex;
-      gap: 15px;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeUp 1.2s ease forwards;
-      animation-delay: 1.5s;
-    }
-
-    .hero-content .buttons button {
-      padding: 12px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .btn-primary {
-      background: red;
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: darkred;
-    }
-
-    .btn-secondary {
-      background: black;
-      color: white;
-    }
-
-    .btn-secondary:hover {
-      background: #333;
-    }
-
-    /* Animations */
-    @keyframes zoomIn {
+    @keyframes fadeZoom {
       to {
         opacity: 1;
         transform: scale(1);
       }
+    }
+
+    .hero-text {
+      max-width: 500px;
+    }
+
+    .hero-text h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: black;
+      opacity: 0;
+      transform: translateX(-50px);
+      animation: slideLeft 1s ease forwards;
+      animation-delay: 0.5s;
+    }
+
+    .hero-text p {
+      margin-bottom: 20px;
+      color: #333;
+      opacity: 0;
+      transform: translateX(50px);
+      animation: slideRight 1s ease forwards;
+      animation-delay: 1s;
+    }
+
+    .hero-text .btn-group {
+      display: flex;
+      gap: 15px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1s ease forwards;
+      animation-delay: 1.5s;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: black;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: hotpink;
+      color: black;
+    }
+
+    .btn-secondary {
+      background: yellow;
+      color: black;
+    }
+
+    .btn-secondary:hover {
+      background: hotpink;
+      color: white;
     }
 
     @keyframes slideLeft {
@@ -252,22 +250,161 @@
         transform: translateY(0);
       }
     }
+
+    /* Programs Section */
+    .programs {
+      padding: 60px 10%;
+      background: #fdfdfd;
+      text-align: center;
+    }
+
+    .programs h2 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: black;
+    }
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .program {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease;
+    }
+
+    .program img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .program:hover img {
+      transform: scale(1.1);
+    }
+
+    .program h3 {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 15px;
+      background: rgba(255, 105, 180, 0.85); /* hotpink overlay */
+      color: white;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    .program.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Gallery Section */
+.gallery {
+  padding: 60px 10%;
+  background: #fff;
+  text-align: center;
+}
+
+.gallery h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: black;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+.gallery-item .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  color: white;
+  padding: 20px;
+}
+
+.gallery-item:hover .overlay {
+  opacity: 1;
+}
+
+.gallery-item .overlay h3 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.gallery-item .overlay p {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: yellow;
+}
+
+.gallery-item .overlay button {
+  background: hotpink;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.gallery-item .overlay button:hover {
+  background: yellow;
+  color: black;
+}
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
+  <!-- Navbar -->
   <nav>
     <div class="logo">FASHION</div>
     <div class="hamburger" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </div>
     <ul id="nav-links">
       <li><a href="#">Home</a></li>
-      <li>
-        <a href="#">Services ∨</a>
+      <li><a href="#">Services ∨</a>
         <ul>
           <li><a href="#">Styling</a></li>
           <li><a href="#">Makeover</a></li>
@@ -277,8 +414,7 @@
           <li><a href="#">Virtual Styling</a></li>
         </ul>
       </li>
-      <li>
-        <a href="#">Programs ∨</a>
+      <li><a href="#">Programs ∨</a>
         <ul>
           <li><a href="#">Workshops</a></li>
           <li><a href="#">Fashion Shows</a></li>
@@ -288,8 +424,7 @@
           <li><a href="#">Photo Shoots</a></li>
         </ul>
       </li>
-      <li>
-        <a href="#">Categories ∨</a>
+      <li><a href="#">Categories ∨</a>
         <ul>
           <li><a href="#">Gowns</a></li>
           <li><a href="#">Shoes</a></li>
@@ -303,15 +438,93 @@
     </ul>
   </nav>
 
-  <!-- HERO SECTION -->
+  <!-- Hero Section -->
   <section class="hero">
-    <img src="https://via.placeholder.com/500x400.png?text=Fashion+Image" alt="Fashion Image">
-    <div class="hero-content">
-      <h1>Step Into Elegance</h1>
-      <p>Discover our latest collection of gowns, shoes, and accessories designed to bring out your confidence and style.</p>
-      <div class="buttons">
-        <button class="btn-primary">Shop Now</button>
-        <button class="btn-secondary">Learn More</button>
+    <img src="model.png" alt="Fashion Model">
+    <div class="hero-text">
+      <h1>Step Into Style</h1>
+      <p>Discover the latest trends, exclusive collections, and timeless pieces that make every moment unforgettable.</p>
+      <div class="btn-group">
+        <button class="btn btn-primary">Shop Now</button>
+        <button class="btn btn-secondary">Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs Section -->
+  <section class="programs">
+    <h2>Our Programs</h2>
+    <div class="program-grid">
+      <div class="program">
+        <img src="model.png" alt="Workshops">
+        <h3>Fashion Workshops</h3>
+      </div>
+      <div class="program">
+        <img src="model.png" alt="Shows">
+        <h3>Exclusive Shows</h3>
+      </div>
+      <div class="program">
+        <img src="model.png" alt="Training">
+        <h3>Training & Mentorship</h3>
+      </div>
+      <div class="program">
+        <img src="model.png" alt="Launches">
+        <h3>Brand Launches</h3>
+      </div>
+      <div class="program">
+        <img src="model.png" alt="Networking">
+        <h3>Networking Events</h3>
+      </div>
+      <div class="program">
+        <img src="model.png" alt="Photoshoots">
+        <h3>Photo Sessions</h3>
+      </div>
+      <div class="program">
+        <img src="model.png" alt="Training">
+        <h3>Training & Mentorship</h3>
+      </div>
+      <div class="program">
+        <img src="model.png" alt="Training">
+        <h3>Training & Mentorship</h3>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Gallery Section -->
+  <section class="gallery">
+    <h2>Purchase Gowns</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="elegant.jpg" alt="Elegant Gown">
+        <div class="overlay">
+          <h3>Elegant Gown</h3>
+          <p>$120</p>
+          <button class="btn btn-secondary">Buy Now</button>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="evening.png" alt="Evening Dress">
+        <div class="overlay">
+          <h3>Evening Dress</h3>
+          <p>$150</p>
+          <button class="btn btn-secondary">Buy Now</button>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="wedding.jpg" alt="Classic Gown">
+        <div class="overlay">
+          <h3>Classic Gown</h3>
+          <p>$180</p>
+          <button class="btn btn-secondary">Buy Now</button>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="sheath.jpg" alt="Modern Gown">
+        <div class="overlay">
+          <h3>Sheath Gown</h3>
+          <p>$200</p>
+          <button class="btn btn-secondary">Buy Now</button>
+        </div>
       </div>
     </div>
   </section>
@@ -320,7 +533,26 @@
     function toggleMenu() {
       document.getElementById("nav-links").classList.toggle("active");
     }
-  </script>
 
+    // Fade up animation for programs
+    const programs = document.querySelectorAll(".program");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    programs.forEach(program => {
+      observer.observe(program);
+    });
+    
+    
+  // Navbar hamburger toggle
+  function toggleMenu() {
+    document.getElementById("nav-links").classList.toggle("active");
+  }
+  </script>
 </body>
 </html>
