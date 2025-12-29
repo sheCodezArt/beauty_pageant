@@ -1,0 +1,103 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(45deg, #360a68, #0b3a5b, #047553);
+  color: #fff;
+}
+
+header {
+  margin: 50px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+header div:first-child {
+  font-family: 'Times New Roman', Times, serif;
+  color: #fff;
+  letter-spacing: 1.7px;
+  font-size: 40px;
+}
+
+header div:nth-child(2) nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header div:nth-child(2) nav ul li {
+  list-style: none;
+}
+
+header div:nth-child(2) nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+  text-transform: capitalize;
+  padding: 25px;
+  font-weight: bold;
+}
+
+header div:nth-child(2) nav ul li:first-child a {
+  color: #095fae;
+}
+
+header div:nth-child(3) a {
+  text-decoration: none;
+  color: #fff;
+  margin: 0 20px;
+}
+
+header div:nth-child(3) a:nth-child(2) {
+  border: solid 1px black;
+  padding: 16px 26px;
+}
+
+section:nth-child(1) {
+  height: 80vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px;
+}
+
+section:nth-child(1) div {
+  width: 50%;
+}
+
+section:nth-child(1) div h1 {
+  margin: 30px 0;
+}
+
+section:nth-child(1) div p {
+  margin: 20px 0;
+}
+
+section:nth-child(1) div button {
+  padding: 17px 35px;
+  text-transform: capitalize;
+  color: #fff;
+  width: 150px;
+  text-align: center;
+  border: none;
+  font-weight: bold;
+}
+
+section:nth-child(1) div button:nth-child(3) {
+  margin: 25px 0;
+  background-color: #05b7ee;
+}
+
+section:nth-child(1) div > button:nth-child(4) {
+  margin: 25px 30px;
+  border: solid #fff 1px;
+  background: transparent;
+}
+
